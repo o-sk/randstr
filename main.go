@@ -11,7 +11,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-var letters = []rune("abcdefghigeklmnopgrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
+var letters = []rune("abcdefghijklmnopgrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
 
 func init() {
 	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64))
