@@ -19,10 +19,14 @@ func main() {
 	app := cli.NewApp()
 
 	app.Name = "randstr"
-	app.Usage = "Return random string"
+	app.Usage = "Copy random strings to clipboard"
 	app.Version = "0.0.1"
 
-	var length int
+	var (
+		length int
+		output bool
+	)
+
 	app.Flags = []cli.Flag{
 		cli.IntFlag{
 			Name:        "length, l",
@@ -30,12 +34,17 @@ func main() {
 			Value:       20,
 			Destination: &length,
 		},
+		cli.BoolFlag{
+			Name:        "o",
+			Usage:       "Output stdout",
+			Destination: &output,
+		},
 	}
 
 	app.Action = func(conrext *cli.Context) error {
 		var randstr RandStr
 		randstr.Generate(length)
-		randstr.Output()
+		randstr.Output(output)
 		return nil
 	}
 

@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"math/rand"
+
+	"github.com/atotto/clipboard"
 )
 
 type RandStr struct {
@@ -19,6 +21,10 @@ func (randstr *RandStr) Generate(length int) {
 	randstr.String = string(runes)
 }
 
-func (randstr *RandStr) Output() {
-	fmt.Println(randstr.String)
+func (randstr *RandStr) Output(output bool) {
+	if output {
+		fmt.Println(randstr.String)
+	} else {
+		clipboard.WriteAll(randstr.String)
+	}
 }
