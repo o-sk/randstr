@@ -2,7 +2,6 @@ package main
 
 import (
 	crand "crypto/rand"
-	"fmt"
 	"math"
 	"math/big"
 	"math/rand"
@@ -10,8 +9,6 @@ import (
 
 	"github.com/urfave/cli"
 )
-
-var letters = []rune("abcdefghijklmnopgrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
 
 func init() {
 	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64))
@@ -36,18 +33,11 @@ func main() {
 	}
 
 	app.Action = func(conrext *cli.Context) error {
-		string := randstr(length)
-		fmt.Println(string)
+		var randstr RandStr
+		randstr.Generate(length)
+		randstr.Output()
 		return nil
 	}
 
 	app.Run(os.Args)
-}
-
-func randstr(length int) string {
-	runes := make([]rune, length)
-	for i := range runes {
-		runes[i] = letters[rand.Intn(len(letters))]
-	}
-	return string(runes)
 }
