@@ -29,7 +29,7 @@ func main() {
 	app.Flags = []cli.Flag{
 		cli.IntFlag{
 			Name:        "length, l",
-			Usage:       "Length or random string",
+			Usage:       "Length of random string",
 			Value:       20,
 			Destination: &length,
 		},
