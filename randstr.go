@@ -1,7 +1,10 @@
 package main
 
 import (
+	crand "crypto/rand"
 	"fmt"
+	"math"
+	"math/big"
 	"math/rand"
 
 	"github.com/atotto/clipboard"
@@ -12,6 +15,11 @@ type RandStr struct {
 }
 
 var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
+
+func init() {
+	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64))
+	rand.Seed(seed.Int64())
+}
 
 func (randstr *RandStr) Generate(length int) {
 	runes := make([]rune, length)

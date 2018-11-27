@@ -1,19 +1,10 @@
 package main
 
 import (
-	crand "crypto/rand"
-	"math"
-	"math/big"
-	"math/rand"
 	"os"
 
 	"github.com/urfave/cli"
 )
-
-func init() {
-	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64))
-	rand.Seed(seed.Int64())
-}
 
 func main() {
 	app := cli.NewApp()
