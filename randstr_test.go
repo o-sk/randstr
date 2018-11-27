@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestGeneraate(t *testing.T) {
+func TestGenerate(t *testing.T) {
 	var randstr RandStr
 	randstr.Generate(20)
 
@@ -12,7 +12,7 @@ func TestGeneraate(t *testing.T) {
 	}
 }
 
-func TestGeneraateAlphabet(t *testing.T) {
+func TestGenerateAlphabet(t *testing.T) {
 	var randstr RandStr
 	randstr.GenerateAlphabet(20)
 
@@ -22,7 +22,7 @@ func TestGeneraateAlphabet(t *testing.T) {
 	}
 }
 
-func TestGeneraateNumber(t *testing.T) {
+func TestGenerateNumber(t *testing.T) {
 	var randstr RandStr
 	randstr.GenerateNumber(8)
 
