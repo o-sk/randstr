@@ -11,7 +11,7 @@ type RandStr struct {
 	String string
 }
 
-var letters = []rune("abcdefghijklmnopgrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
+var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
 
 func (randstr *RandStr) Generate(length int) {
 	runes := make([]rune, length)
