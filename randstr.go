@@ -14,7 +14,8 @@ type RandStr struct {
 	String string
 }
 
-var letters = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
+var alphabets = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var numbers = []rune("1234567890")
 
 func init() {
 	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64))
@@ -22,6 +23,10 @@ func init() {
 }
 
 func (randstr *RandStr) Generate(length int) {
+	randstr.generate(append(alphabets, numbers...), length)
+}
+
+func (randstr *RandStr) generate(letters []rune, length int) {
 	runes := make([]rune, length)
 	for i := range runes {
 		runes[i] = letters[rand.Intn(len(letters))]
