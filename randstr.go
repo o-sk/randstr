@@ -26,6 +26,14 @@ func (randstr *RandStr) Generate(length int) {
 	randstr.generate(append(alphabets, numbers...), length)
 }
 
+func (randstr *RandStr) GenerateAlphabet(length int) {
+	randstr.generate(alphabets, length)
+}
+
+func (randstr *RandStr) GenerateNumber(length int) {
+	randstr.generate(numbers, length)
+}
+
 func (randstr *RandStr) generate(letters []rune, length int) {
 	runes := make([]rune, length)
 	for i := range runes {

@@ -39,5 +39,29 @@ func main() {
 		return nil
 	}
 
+	app.Commands = []cli.Command{
+		{
+			Name:    "alphabet",
+			Aliases: []string{"a"},
+			Usage:   "alphabet only",
+			Action: func(context *cli.Context) error {
+				var randstr RandStr
+				randstr.GenerateAlphabet(length)
+				randstr.Output(output)
+				return nil
+			},
+		},
+		{
+			Name:    "number",
+			Aliases: []string{"n"},
+			Usage:   "number only",
+			Action: func(context *cli.Context) error {
+				var randstr RandStr
+				randstr.GenerateNumber(length)
+				randstr.Output(output)
+				return nil
+			},
+		},
+	}
 	app.Run(os.Args)
 }
