@@ -1,7 +1,10 @@
 package main
 
 import (
+	crand "crypto/rand"
 	"fmt"
+	"math"
+	"math/big"
 	"math/rand"
 	"os"
 
@@ -9,6 +12,11 @@ import (
 )
 
 var letters = []rune("abcdefghigeklmnopgrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
+
+func init() {
+	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64))
+	rand.Seed(seed.Int64())
+}
 
 func main() {
 	app := cli.NewApp()
