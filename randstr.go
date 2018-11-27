@@ -16,6 +16,7 @@ type RandStr struct {
 
 var alphabets = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 var numbers = []rune("1234567890")
+var symbols = []rune("+-*%<=>?@$&_.")
 
 func init() {
 	seed, _ := crand.Int(crand.Reader, big.NewInt(math.MaxInt64))
@@ -23,7 +24,7 @@ func init() {
 }
 
 func (randstr *RandStr) Generate(length int) {
-	randstr.generate(append(alphabets, numbers...), length)
+	randstr.generate(append(append(alphabets, numbers...), symbols...), length)
 }
 
 func (randstr *RandStr) GenerateAlphabet(length int) {
