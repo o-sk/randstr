@@ -2,10 +2,13 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 
 	"github.com/urfave/cli"
 )
+
+var letters = []rune("abcdefghigeklmnopgrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
 
 func main() {
 	app := cli.NewApp()
@@ -24,5 +27,9 @@ func main() {
 }
 
 func randstr() string {
-	return "abcdefghi"
+	runes := make([]rune, 8)
+	for i := range runes {
+		runes[i] = letters[rand.Intn(len(letters))]
+	}
+	return string(runes)
 }
