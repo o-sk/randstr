@@ -25,8 +25,18 @@ func main() {
 	app.Usage = "Return random string"
 	app.Version = "0.0.1"
 
+	var length int
+	app.Flags = []cli.Flag{
+		cli.IntFlag{
+			Name:        "length, l",
+			Usage:       "Length or random string",
+			Value:       20,
+			Destination: &length,
+		},
+	}
+
 	app.Action = func(conrext *cli.Context) error {
-		string := randstr()
+		string := randstr(length)
 		fmt.Println(string)
 		return nil
 	}
@@ -34,8 +44,8 @@ func main() {
 	app.Run(os.Args)
 }
 
-func randstr() string {
-	runes := make([]rune, 8)
+func randstr(length int) string {
+	runes := make([]rune, length)
 	for i := range runes {
 		runes[i] = letters[rand.Intn(len(letters))]
 	}
