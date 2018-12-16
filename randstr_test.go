@@ -1,6 +1,15 @@
-package main
+package randstr
 
-import "testing"
+import (
+	"math/rand"
+	"os"
+	"testing"
+)
+
+func TestMain(m *testing.M) {
+	rand.Seed(123456)
+	os.Exit(m.Run())
+}
 
 func TestGenerate(t *testing.T) {
 	var randstr RandStr
