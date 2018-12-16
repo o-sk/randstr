@@ -3,7 +3,6 @@ package main
 import (
 	"os"
 
-	"github.com/o-sk/randstr"
 	"github.com/urfave/cli"
 )
 
@@ -34,7 +33,7 @@ func main() {
 	}
 
 	app.Action = func(conrext *cli.Context) error {
-		var randstr randstr.RandStr
+		var randstr RandStr
 		randstr.Generate(length)
 		randstr.Output(output)
 		return nil
@@ -46,7 +45,7 @@ func main() {
 			Aliases: []string{"a"},
 			Usage:   "alphabet only",
 			Action: func(context *cli.Context) error {
-				var randstr randstr.RandStr
+				var randstr RandStr
 				randstr.GenerateAlphabet(length)
 				randstr.Output(output)
 				return nil
@@ -57,7 +56,7 @@ func main() {
 			Aliases: []string{"n"},
 			Usage:   "number only",
 			Action: func(context *cli.Context) error {
-				var randstr randstr.RandStr
+				var randstr RandStr
 				randstr.GenerateNumber(length)
 				randstr.Output(output)
 				return nil
